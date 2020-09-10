@@ -45,7 +45,7 @@ public class CommonMethods extends PageInitializer {
 	 * @param element
 	 */
 	public static void jsClick(WebElement element) {
-		getJSExecutor().executeScript("argument[0].click;", element);
+		getJSExecutor().executeScript("arguments[0].click();", element);
 	}
 
 	/**
@@ -171,15 +171,15 @@ public class CommonMethods extends PageInitializer {
 		}
 	}
 	/**
-	 * method to take screenshots
-	 * @param filePath
+	 * Method that will take a screenshot and store with name in specified location with .png extension
 	 * @param fileName
 	 */
-	public static void takeScreenShot(String filePath, String fileName) {
-		TakesScreenshot ts=(TakesScreenshot)driver;
-		File screen=ts.getScreenshotAs(OutputType.FILE);
+	public static void takeScreenshot(String fileName) {
+
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(screen, new File(filePath+"/"+fileName));
+			FileUtils.copyFile(src, new File(Constants.SCREENSHOT_FILEPATH + fileName + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

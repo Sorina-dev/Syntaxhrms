@@ -9,7 +9,7 @@ public class ConfigsReader {
 /*
  * @method - to read the property file from src/test/resources/configs/configuration.properties 
  */
-static Properties prop;    // 
+static Properties prop;    // object of properties 
 	
 	public static void readProperties(String filePath) {   //public and static to be read everywhere and belong to the class
 	                                                      

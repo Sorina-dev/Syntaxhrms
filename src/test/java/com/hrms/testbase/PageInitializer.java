@@ -10,7 +10,7 @@ public class PageInitializer extends BaseClass{
 	public static LoginPageElements login;
 	protected static DashboardPageElements dash;
 	protected static AddEmployeePageElements addEmp;
-	protected static ViewPersonalDetailsPageElements perDetails;
+	protected static ViewPersonalDetailsPageElements persDetails;
 	
 	/**
 	 * initializing the classes with web elements from pages package and it is called in setUp() from BaseClass class(testbase)
@@ -20,6 +20,6 @@ public class PageInitializer extends BaseClass{
 		login = new LoginPageElements();
 		dash = new DashboardPageElements();
 		addEmp = new AddEmployeePageElements();
-		perDetails = new ViewPersonalDetailsPageElements();
+		persDetails = new ViewPersonalDetailsPageElements();
 	}
 }
