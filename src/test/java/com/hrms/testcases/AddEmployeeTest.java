@@ -17,11 +17,11 @@ public class AddEmployeeTest extends CommonMethods{
 
 	@DataProvider 
 	public Object[][] employeesData() {
-		Object[][] data = { { "AnneR", "AnneS123#%&@", "Barbie", "Smithhy" },//next time the username can be changed only in order to add another employees on the web site
-				{ "AndrewLM", "AndrewL123#%$$*", "Ludovic", "Locksmithhi" },
-				{ "BenjaminWR", "Ben123#%&**", "Benny", "Mather" },
-				{ "BeyonceCCD", "BeyonceC123#%&^", "Charly", "Cartery" },
-				{ "JessieRoEO", "JessieR0123#%&##", "Emily", "Rodrigueso" } };
+		Object[][] data = { { "Ana", "AnneS123#%&)", "Anna", "Smit" },//next time the username can be changed only in order to add another employees on the web site
+				{ "Andrey", "AndrewL123#%(**", "Bibby", "Locks" },
+				{ "Benja", "Ben123#%&*@", "Ben", "Math" },
+				{ "Beyo", "BeyonceC123#%#)", "Chabby", "Car" },
+				{ "Jesep", "JessieR0123#%%%)", "Emi", "Rodrig" } };
 		return data;
 	}
 
@@ -88,6 +88,7 @@ public class AddEmployeeTest extends CommonMethods{
 			sendText(addEmp.lastName, lastName);
 			jsClick(addEmp.saveButton);
 			soft.assertEquals(persDetails.progilePicText.getText(), firstName + " " + middleName + " " + lastName); //validation of employee
+	   //   CommonMethods.takeScreenshot("addMultipleEmployees");
 		}
 		soft.assertAll();   //outside of the loop 
 	}

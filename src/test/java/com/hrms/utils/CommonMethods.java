@@ -2,6 +2,9 @@ package com.hrms.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
@@ -171,18 +174,38 @@ public class CommonMethods extends PageInitializer {
 		}
 	}
 	/**
-	 * Method that will take a screenshot and store with name in specified location with .png extension
+	 * takes screenshots and giving the time stamp
 	 * @param fileName
 	 */
 	public static void takeScreenshot(String fileName) {
 
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(src, new File(Constants.SCREENSHOT_FILEPATH + fileName + ".png"));
+		try {                                                                          //below method
+			FileUtils.copyFile(src, new File(Constants.SCREENSHOT_FILEPATH + fileName +getTimeStamp()+ ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * this returns number of milliseconds since January 1, 1970/ we don't need it
+	 */
+	public void getTimeStamp1() {
+		Date date = new Date();
+		date.getTime(); 
+	}
+	
+	/**
+	 * This method will generate timeStamp
+	 * @return
+	 */
+	public static String getTimeStamp() {//had to add it to CommonMethods class takeScreenshot() above method^
+		//class
+		Date date=new Date();
+		//class extends DateFormat                 //years-month-day- hours -min - sec
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");//we changed ":" into "_" cuz it doesn't support 
+		           //method that returns String date
+		return sdf.format(date);
 	}
 	
 	
