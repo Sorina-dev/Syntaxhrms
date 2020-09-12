@@ -39,9 +39,9 @@ public class LoginTest extends CommonMethods{
 	@DataProvider
 	public String[][] invalidCredentials() {
 		String[][] data = { 
-				{ "", "Hum@nhrm123", "Username cannot be empty" },
-				{ "Admin", "", "Password cannot be empty" }, 
-				{ "Admin", "Hum@nhrm12", "Invalid credentials" }, 
+				{ "", "SyntaxAdmin123!", "Username cannot be empty" },
+				{ "SyntaxAdmin", "", "Password cannot be empty" }, 
+				{ "SyntaxAdmin", "Hum@nhrm12", "Invalid credentials" }, 
 				};
 		return data;
 	}

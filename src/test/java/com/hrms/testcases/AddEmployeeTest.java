@@ -17,11 +17,11 @@ public class AddEmployeeTest extends CommonMethods{
 
 	@DataProvider 
 	public Object[][] employeesData() {
-		Object[][] data = { { "Ana", "AnneS123#%&)", "Anna", "Smit" },//next time the username can be changed only in order to add another employees on the web site
-				{ "Andrey", "AndrewL123#%(**", "Bibby", "Locks" },
-				{ "Benja", "Ben123#%&*@", "Ben", "Math" },
-				{ "Beyo", "BeyonceC123#%#)", "Chabby", "Car" },
-				{ "Jesep", "JessieR0123#%%%)", "Emi", "Rodrig" } };
+		Object[][] data = { { "AnnaRe", "AnneS123)*)", "Annitu", "Smito" },//next time the username can be changed only in order to add another employees on the web site
+				{ "AndreiYe", "AndrewL123(**", "Bibber", "Lockssr" },
+				{ "Benjaabe", "Ben12#%&*(", "Benitr", "Mathewo" },
+				{ "BeyorRke", "BeyonceC23#$*)", "Chabbythro", "CarRor" },
+				{ "Jesepte", "JessieR013#%*)", "EmilLr", "Rodrigqor" } };
 		return data;
 	}
 
@@ -31,13 +31,14 @@ public class AddEmployeeTest extends CommonMethods{
 		sendText(login.passwordTextBox, ConfigsReader.getPropValue("password"));
 		click(login.btnLogin);
 		
-		click(dash.pimLinkBtn);
-		waitForVisibility(dash.addEmployeeBtn);
-		click(dash.addEmployeeBtn);
+	//	click(dash.pimLinkBtn);
+	//	waitForVisibility(dash.addEmployeeBtn);
+	//	click(dash.addEmployeeBtn);
 		
 		//or javascript method to be sure it clicks
-		//jsClick(dash.pimLinkBtn);
-		//jsClick(dash.addEmployeeBtn);
+		jsClick(dash.pimLinkBtn);
+		waitForVisibility(dash.addEmployeeBtn);
+		jsClick(dash.addEmployeeBtn);
 		
 		sendText(addEmp.firstNameField, firstnameText);
 		sendText(addEmp.lastName,lastnameText);
@@ -57,10 +58,10 @@ public class AddEmployeeTest extends CommonMethods{
 		sendText(login.passwordTextBox, ConfigsReader.getPropValue("password"));
 		click(login.btnLogin);
 
-//		click(dash.pimLinkBtn);
-//		waitForVisibility(dash.addEmployeeBtn);
-//		click(dash.addEmployeeBtn);
-		jsClick(dash.pimLinkBtn);
+	click(dash.pimLinkBtn);
+	waitForVisibility(dash.addEmployeeBtn);
+	click(dash.addEmployeeBtn);
+	//	jsClick(dash.pimLinkBtn);
 	//	jsClick(dash.addEmployeeBtn);
    
    /*
@@ -74,21 +75,24 @@ public class AddEmployeeTest extends CommonMethods{
 				"AddEmployee");
 		SoftAssert soft = new SoftAssert();   // in order to be outside of the loop
 		for (Map<String, String> map : employeeList) {
-			
-			jsClick(dash.addEmployeeBtn);     //to click on add employee button for the new employee
-//			waitForVisibility(dash.addEmployeeBtn);
-//			click(dash.addEmployeeBtn);
+		//	waitForVisibility(dash.addEmployeeBtn);
+		//	jsClick(dash.addEmployeeBtn);     //to click on add employee button for the new employee
+		    waitForVisibility(dash.addEmployeeBtn);
+			click(dash.addEmployeeBtn);
 			String firstName = map.get("FirstName");
 			String middleName = map.get("MiddleName");
 			String lastName = map.get("LastName");
             
 			waitForVisibility(addEmp.firstNameField);
 			sendText(addEmp.firstNameField, firstName);
+			waitForVisibility(addEmp.middleName);
 			sendText(addEmp.middleName, middleName);
+			waitForVisibility(addEmp.lastName);
 			sendText(addEmp.lastName, lastName);
 			jsClick(addEmp.saveButton);
+			waitForVisibility(persDetails.progilePicText);
 			soft.assertEquals(persDetails.progilePicText.getText(), firstName + " " + middleName + " " + lastName); //validation of employee
-	   //   CommonMethods.takeScreenshot("addMultipleEmployees");
+	      CommonMethods.takeScreenshot("addMultipleEmployees");
 		}
 		soft.assertAll();   //outside of the loop 
 	}
